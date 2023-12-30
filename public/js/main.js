@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     const index = editIndex.value.trim();
     const newname = EditNameInput.value.trim();
-    const age = +EditAgeInput.value.trim(); // + for coverting string into number
+    const age = parseInt(EditAgeInput.value.trim()) // + for coverting string into number
     const gender = EditGenderSelectInput.value;
 
     if (newname != "" && gender !== "") {
@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Please full all Details");
     }
   });
+
 
   function addtoLocalStorageCustomFunction(user) {
     const getStoredData = JSON.parse(localStorage.getItem("Data")) || [];
@@ -86,9 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const index = this.dataset.index;
     const getStoredData = JSON.parse(localStorage.getItem("Data")) || [];
     const data = getStoredData[index]; // getting value from LocalStorage
-    // console.log(data);
+    console.log(getStoredData[index]);
     // Asigning the Value into Edit Model Popup as input
-    editIndex.textContent = `Form ID : ${index}`; // Assign the index into Element for Checking the index of target
+    editIndex.value = index; // Assign the index into Element for Checking the index of target
     EditNameInput.value = data.name;
     EditAgeInput.value = data.age;
     EditGenderSelectInput.value = data.gender;
